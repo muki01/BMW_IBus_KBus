@@ -4,9 +4,14 @@
 // goodbye lights and follow-me-home from the remote key - and adds a web
 // interface to control the car from your phone.
 //
-// The ESP32 goes to deep sleep when the bus has been silent for a while and
-// wakes up again as soon as there is traffic on the bus. While it is awake it
-// runs a Wi-Fi access point: connect to it and open http://192.168.4.1
+// Power works like on the Arduino version: when the bus has been silent for a
+// while the sketch pulls EN low, the TH3122 goes to sleep and switches the
+// supply of the ESP32 off. Traffic on the bus wakes the TH3122, which switches
+// the supply back on. The TH3122 cannot power an ESP32 by itself, so it
+// switches a buck converter with an enable pin instead (see the README).
+//
+// While the ESP32 is on it runs a Wi-Fi access point: connect to it and open
+// http://192.168.4.1
 //
 // Requires the "BMW IBus KBus" library:
 // https://github.com/muki01/BMW_IBus_KBus_Library
@@ -16,9 +21,6 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include <Preferences.h>
-#include <driver/gpio.h>
-#include <driver/rtc_io.h>
-#include <esp_sleep.h>
 #include <BMW_IBus_KBus.h>
 #include "Config.h"
 #include "Commands.h"
@@ -64,10 +66,6 @@ void IBUS_ISR_ATTR startTimer() {
 }
 
 void setup() {
-  gpio_hold_dis((gpio_num_t)ENABLE_PIN);  // release the pins that were held during deep sleep
-  gpio_deep_sleep_hold_dis();
-  rtc_gpio_deinit((gpio_num_t)SEN_STA_PIN);
-
   Serial.begin(115200);
   Serial.println(F("--BMW E46 K-Bus--"));
 
@@ -80,9 +78,6 @@ void setup() {
 
   loadSettings();
   lastBusTime = millis();
-  if (esp_sleep_get_wakeup_cause() != ESP_SLEEP_WAKEUP_EXT0) {
-    touchWeb();  // powered on by hand: stay awake long enough to connect a phone
-  }
 
   WiFi.mode(WIFI_AP);
   WiFi.softAP(WIFI_SSID, WIFI_PASSWORD);
@@ -179,7 +174,7 @@ unsigned long secondsLeft(unsigned long elapsed, unsigned int limitSeconds) {
   return (limit - elapsed + 999) / 1000;
 }
 
-// The ESP32 stays awake while there is bus traffic or somebody uses the web interface
+// The ESP32 stays on while there is bus traffic or somebody uses the web interface
 unsigned long secondsUntilSleep() {
   unsigned long busLeft = secondsLeft(millis() - lastBusTime, sleepAfter);
   unsigned long webLeft = webUsed ? secondsLeft(millis() - lastWebTime, webAwake) : 0;
@@ -195,20 +190,16 @@ void goToSleep() {
   Serial.println(F("Going to sleep"));
   Serial.flush();
 
-  server.stop();
-  WiFi.softAPdisconnect(true);
-  WiFi.mode(WIFI_OFF);
-  detachInterrupt(digitalPinToInterrupt(SEN_STA_PIN));
-
   digitalWrite(LED_PIN, LOW);
-  digitalWrite(ENABLE_PIN, LOW);         // Shutdown TH3122, like the Arduino version
-  gpio_hold_en((gpio_num_t)ENABLE_PIN);  // keep EN low while the ESP32 sleeps
-  gpio_deep_sleep_hold_en();
+  digitalWrite(ENABLE_PIN, LOW);  // Shutdown TH3122 - it switches the supply of the ESP32 off
 
-  rtc_gpio_pullup_dis((gpio_num_t)SEN_STA_PIN);
-  rtc_gpio_pulldown_en((gpio_num_t)SEN_STA_PIN);
-  esp_sleep_enable_ext0_wakeup((gpio_num_t)SEN_STA_PIN, 1);  // wake up when the bus becomes active
-  esp_deep_sleep_start();
+  // The ESP32 has no power from here on. If it is still running after a moment
+  // it is powered from somewhere else (USB on the bench), so it carries on.
+  delay(3000);
+  Serial.println(F("Still powered - staying on"));
+  digitalWrite(ENABLE_PIN, HIGH);
+  lastBusTime = millis();
+  webUsed = false;
 }
 
 // -----------------------------------------------------------------------------
@@ -277,6 +268,7 @@ void handleCommands() {
 void handleState() {
   String json = "{\"busIdle\":" + String((millis() - lastBusTime) / 1000);
   json += ",\"sleepIn\":" + String(secondsUntilSleep());
+  json += ",\"uptime\":" + String(millis() / 1000);
   json += ",\"sleepAfter\":" + String(sleepAfter);
   json += ",\"webAwake\":" + String(webAwake);
   json += ",\"keyFob\":" + String(keyFobLights ? "true" : "false");

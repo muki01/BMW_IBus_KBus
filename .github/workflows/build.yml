@@ -1,0 +1,70 @@
+name: Build
+
+on:
+  push:
+    paths:
+      - 'Codes/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    paths:
+      - 'Codes/**'
+      - '.github/workflows/build.yml'
+
+jobs:
+  compile:
+    name: ${{ matrix.sketch }} (${{ matrix.board }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sketch: E46_KBus_Code
+            board: Arduino Nano
+            fqbn: arduino:avr:nano
+            platform: arduino:avr
+          - sketch: E46_KBus_Code
+            board: Arduino Mega 2560
+            fqbn: arduino:avr:mega
+            platform: arduino:avr
+          - sketch: Basic_Code
+            board: Arduino Uno
+            fqbn: arduino:avr:uno
+            platform: arduino:avr
+          - sketch: E46_KBus_ESP32
+            board: ESP32 Dev Module
+            fqbn: esp32:esp32:esp32
+            platform: esp32:esp32
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Configure ESP32 Board Manager
+        if: matrix.platform == 'esp32:esp32'
+        run: |
+          arduino-cli config init
+          arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+      - name: Install Board Platform
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install ${{ matrix.platform }}
+
+      - name: Install the BMW IBus KBus library
+        run: |
+          mkdir -p $HOME/Arduino/libraries
+          git clone --depth 1 https://github.com/muki01/BMW_IBus_KBus_Library.git $HOME/Arduino/libraries/BMW_IBus_KBus
+
+      - name: Check that both copies of E46_Codes.h are identical
+        run: cmp Codes/E46_KBus_Code/E46_Codes.h Codes/E46_KBus_ESP32/E46_Codes.h
+
+      - name: Set a Wi-Fi password for the build
+        if: matrix.sketch == 'E46_KBus_ESP32'
+        run: sed -i 's/#define WIFI_PASSWORD ""/#define WIFI_PASSWORD "build-check"/' Codes/E46_KBus_ESP32/Config.h
+
+      - name: Compile
+        run: arduino-cli compile --fqbn ${{ matrix.fqbn }} Codes/${{ matrix.sketch }}

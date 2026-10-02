@@ -1,5 +1,5 @@
 // E46_KBus_Code - welcome lights, goodbye lights and follow-me-home from the
-// remote key of a BMW E46 (Arduino Nano / Uno)
+// remote key of a BMW E46 (Arduino Uno / Nano / Pro Mini / Mega)
 //
 // Requires the "BMW IBus KBus" library:
 // https://github.com/muki01/BMW_IBus_KBus_Library

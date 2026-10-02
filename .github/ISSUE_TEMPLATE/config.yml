@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Library issues
+    url: https://github.com/muki01/BMW_IBus_KBus_Library/issues
+    about: Problems with receiving or transmitting on the bus belong to the BMW IBus KBus library.
+  - name: 🔧 OBD-II diagnostics
+    url: https://github.com/muki01/OBD2_K-line_Reader
+    about: Looking for trouble codes and live engine data? See the OBD2 K-Line Reader and OBD2 CAN Bus Reader.
+  - name: 💼 Custom development
+    url: mailto:muksin.muksin04@gmail.com
+    about: Need custom firmware, a protocol implementation or a PCB? Get in touch.

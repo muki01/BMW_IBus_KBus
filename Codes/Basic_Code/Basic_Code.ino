@@ -1,5 +1,5 @@
 // Basic_Code - prints every message on the I/K-Bus to the debug port
-// (Arduino Nano / Uno)
+// (Arduino Uno / Nano / Pro Mini / Mega)
 //
 // Requires the "BMW IBus KBus" library:
 // https://github.com/muki01/BMW_IBus_KBus_Library

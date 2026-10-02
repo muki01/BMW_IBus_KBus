@@ -1,0 +1,62 @@
+name: 🚗 Vehicle report
+description: Tell us whether the firmware works with your car
+title: "[Vehicle] <model> <year>"
+labels: ["vehicle-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Real-world test reports help everyone find out whether their car is supported. Thank you! 🙌
+  - type: input
+    id: vehicle
+    attributes:
+      label: Vehicle
+      placeholder: Model and year (e.g. BMW E46 330Ci 2002)
+    validations:
+      required: true
+  - type: input
+    id: equipment
+    attributes:
+      label: Relevant equipment
+      placeholder: e.g. xenon headlights, sunroof, convertible, light module version
+  - type: dropdown
+    id: firmware
+    attributes:
+      label: Firmware
+      options:
+        - E46_KBus_ESP32
+        - E46_KBus_Code
+        - Basic_Code
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - ✅ Works
+        - ⚠️ Partially works
+        - ❌ Does not work
+    validations:
+      required: true
+  - type: checkboxes
+    id: features
+    attributes:
+      label: Working functions
+      options:
+        - label: Reading bus messages
+        - label: Welcome lights / goodbye lights / follow-me-home
+        - label: Lights from the web interface
+        - label: Windows and sunroof
+        - label: Locks and trunk
+        - label: Sleep and wake-up
+  - type: input
+    id: hardware
+    attributes:
+      label: Board and interface
+      placeholder: e.g. ESP32 DevKit + TH3122.4
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Messages that behave differently on your car, quirks, logs.

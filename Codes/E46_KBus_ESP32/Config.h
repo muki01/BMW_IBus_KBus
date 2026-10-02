@@ -19,8 +19,8 @@
 // ---- Pins -------------------------------------------------------------------
 #define BUS_RX_PIN 16   // transceiver TXD -> ESP32
 #define BUS_TX_PIN 17   // ESP32 -> transceiver RXD
-#define SEN_STA_PIN 4   // transceiver SEN/STA, also wakes the ESP32 from deep sleep (must be an RTC GPIO)
-#define ENABLE_PIN 5    // transceiver EN
+#define SEN_STA_PIN 4   // transceiver SEN/STA
+#define ENABLE_PIN 5    // transceiver EN - pulled low to switch everything off
 #define LED_PIN 2       // bus activity LED
 
 // ---- Sleep ------------------------------------------------------------------

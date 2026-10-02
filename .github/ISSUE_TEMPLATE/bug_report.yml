@@ -1,0 +1,62 @@
+name: 🐛 Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill in as much as you can. The debug output is the most helpful part.
+  - type: dropdown
+    id: firmware
+    attributes:
+      label: Firmware
+      options:
+        - E46_KBus_ESP32
+        - E46_KBus_Code
+        - Basic_Code
+    validations:
+      required: true
+  - type: input
+    id: board
+    attributes:
+      label: Board
+      placeholder: e.g. ESP32 DevKit, Arduino Nano, Arduino Mega 2560
+    validations:
+      required: true
+  - type: dropdown
+    id: interface
+    attributes:
+      label: Bus interface
+      options:
+        - TH3122.4
+        - ELMOS 10026B
+        - MCP2025
+        - Optocouplers
+        - Other / custom PCB
+    validations:
+      required: true
+  - type: input
+    id: vehicle
+    attributes:
+      label: Vehicle
+      placeholder: Model, year and engine (e.g. BMW E46 320d 2003)
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+  - type: textarea
+    id: logs
+    attributes:
+      label: Debug output
+      description: Paste the serial log (the "Good Message ->" and "TRANSMITING CODE:" lines).
+      render: text

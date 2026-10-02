@@ -5,13 +5,14 @@
 # BMW I-Bus / K-Bus Firmware for ESP32 & Arduino
 
 **Control your classic BMW from your phone.**<br>
-Ready-to-flash ESP32 firmware that puts the lights, windows, locks and trunk of your car on a web page — no app and no internet needed. An Arduino Nano version without Wi-Fi is included too. With transceiver schematics and wiring photos for the BMW E46.
+Ready-to-flash ESP32 firmware that puts the lights, windows, locks and trunk of your car on a web page — no app and no internet needed. A version for Arduino boards without Wi-Fi — Uno, Nano, Pro Mini, Mega — is included too. With transceiver schematics and wiring photos for the BMW E46.
 
 [![Stars](https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=22d3ee)](https://github.com/muki01/BMW_IBus_KBus/stargazers)
 [![Forks](https://img.shields.io/github/forks/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=38bdf8)](https://github.com/muki01/BMW_IBus_KBus/forks)
 [![Issues](https://img.shields.io/github/issues/muki01/BMW_IBus_KBus?style=flat-square)](https://github.com/muki01/BMW_IBus_KBus/issues)
 [![License: MIT](https://img.shields.io/github/license/muki01/BMW_IBus_KBus?style=flat-square)](LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/muki01/BMW_IBus_KBus?style=flat-square)](https://github.com/muki01/BMW_IBus_KBus/commits/main)
+[![Build](https://img.shields.io/github/actions/workflow/status/muki01/BMW_IBus_KBus/build.yml?style=flat-square&label=build)](https://github.com/muki01/BMW_IBus_KBus/actions/workflows/build.yml)
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
 ![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=flat-square&logo=espressif&logoColor=white)
 ![BMW E46](https://img.shields.io/badge/BMW-E46-0066B1?style=flat-square)
@@ -37,8 +38,8 @@ This repository is the **firmware** side of that idea: complete sketches you upl
 | Firmware | Board | What it does |
 | :-- | :-- | :-- |
 | [`E46_KBus_ESP32`](Codes/E46_KBus_ESP32) | ESP32 | Wi-Fi web interface to control the car from your phone. |
-| [`E46_KBus_Code`](Codes/E46_KBus_Code) | Arduino Nano / Uno | The Nano has no Wi-Fi, so this version works from the remote key: welcome lights, goodbye lights and follow-me-home. |
-| [`Basic_Code`](Codes/Basic_Code) | Arduino Nano / Uno | Bus reader that prints every message — useful to check your wiring. |
+| [`E46_KBus_Code`](Codes/E46_KBus_Code) | Arduino Uno / Nano / Pro Mini / Mega | These boards have no Wi-Fi, so this version works from the remote key: welcome lights, goodbye lights and follow-me-home. |
+| [`Basic_Code`](Codes/Basic_Code) | Arduino Uno / Nano / Pro Mini / Mega | Bus reader that prints every message — useful to check your wiring. |
 
 > [!IMPORTANT]
 > **These sketches need the [BMW IBus KBus library](https://github.com/muki01/BMW_IBus_KBus_Library).** It handles the bus communication — receiving, checksums and collision-free transmitting — and has to be installed before the sketches compile.
@@ -59,7 +60,7 @@ flowchart LR
 | 🔎 | **Bus monitor** | See the latest bus messages live in the web interface. |
 | 💤 | **Sleep mode** | Powers down when the bus goes quiet and wakes up with the car, so it does not drain the battery. |
 
-The **Arduino Nano** has no Wi-Fi, so its firmware is driven by the remote key instead:
+**Arduino** boards have no Wi-Fi, so their firmware is driven by the remote key instead:
 
 | | Function | How it works |
 | :-: | :-- | :-- |
@@ -86,28 +87,41 @@ git clone https://github.com/muki01/BMW_IBus_KBus.git
 **5. Upload.**
 
 - **ESP32** — open `Codes/E46_KBus_ESP32`, set your own Wi-Fi password in [`Config.h`](Codes/E46_KBus_ESP32/Config.h), select **ESP32 Dev Module** and upload. Then connect your phone to the `BMW-E46` network and open **http://192.168.4.1**
-- **Arduino Nano / Uno** — open `Codes/E46_KBus_Code`, select your board and upload. Disconnect the transceiver from D0 / D1 while uploading; the bus shares the hardware UART with USB.
+- **Arduino** — open `Codes/E46_KBus_Code`, select your board (Uno, Nano, Pro Mini or Mega 2560) and upload. Disconnect the transceiver from D0 / D1 while uploading; the bus shares the hardware UART with USB.
 
 ## 📱 ESP32 Web Interface
 
-<img src="Pictures/esp32-web-interface.png" alt="Web interface of the ESP32 firmware: buttons for lights, locks and windows, sleep settings and a live K-Bus monitor" width="100%">
+<table>
+  <tr>
+    <td width="33%"><img src="Pictures/esp32-web-interface-control.png" alt="ESP32 web interface on a phone, Control tab: sleep countdown, category chips and buttons for the lights and locks"></td>
+    <td width="33%"><img src="Pictures/esp32-web-interface-monitor.png" alt="ESP32 web interface on a phone, Monitor tab: live K-Bus messages with sender and receiver"></td>
+    <td width="33%"><img src="Pictures/esp32-web-interface-settings.png" alt="ESP32 web interface on a phone, Settings tab: key fob functions, sleep timers and device information"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Control</b></td>
+    <td align="center"><b>Monitor</b></td>
+    <td align="center"><b>Settings</b></td>
+  </tr>
+</table>
 
-The ESP32 creates its own Wi-Fi network and serves a single page — it works without internet and without an app.
+The ESP32 creates its own Wi-Fi network and serves a single page that behaves like an app — it works without internet and without installing anything.
 
-- **Controls** — every button sends one message from [`E46_Codes.h`](Codes/E46_KBus_ESP32/E46_Codes.h). The buttons are defined in [`Commands.h`](Codes/E46_KBus_ESP32/Commands.h); add, remove or reorder a line to change the page.
-- **Settings** — switch the key-fob light functions on or off and adjust both sleep timers. Settings are stored in flash.
-- **Bus monitor** — the last 20 messages on the bus, newest first.
+- **Control** — every button sends one message from [`E46_Codes.h`](Codes/E46_KBus_ESP32/E46_Codes.h). Filter by category — lights, locks, windows, interior, wipers — and see at a glance how long the ESP32 stays awake. The buttons are defined in [`Commands.h`](Codes/E46_KBus_ESP32/Commands.h); add, remove or reorder a line to change the page.
+- **Monitor** — the last 20 messages on the bus, newest first, with the sending and receiving module named.
+- **Settings** — switch the key-fob light functions on or off, adjust both sleep timers and put the device to sleep. Settings are stored in flash.
 
 ### How sleep works
 
+The ESP32 does not use a sleep mode of its own. Exactly like the Arduino version, it is **switched off completely** by the bus transceiver and powered up again when the car wakes up.
+
 | Situation | Behaviour |
 | :-- | :-- |
-| The bus is active | The ESP32 stays awake. |
-| The bus has been silent for **60 s** | The ESP32 switches off Wi-Fi, puts the transceiver to sleep and enters deep sleep. |
-| You used the web interface | It stays awake for another **300 s** after your last action, even if the bus is silent. |
-| Any message appears on the bus | The transceiver signals the ESP32 and it wakes up — for example when you press the remote key. |
+| The bus is active | The ESP32 stays on. |
+| The bus has been silent for **60 s** | The ESP32 pulls the transceiver's EN pin low. The transceiver goes to sleep and switches the ESP32's power supply off. |
+| You used the web interface | It stays on for another **300 s** after your last action, even if the bus is silent. |
+| Any message appears on the bus | The transceiver wakes up and switches the power supply back on; the ESP32 starts again — for example when you press the remote key. |
 
-Both times can be changed in the web interface. The page shows a countdown to the next sleep and has **Stay awake** and **Sleep now** buttons.
+Both times can be changed on the Settings tab. The Control tab shows a countdown to the next sleep with a **Stay awake** button, and **Sleep now** is on the Settings tab.
 
 > [!WARNING]
 > Anyone who can join the Wi-Fi network can unlock the car. The firmware therefore has **no default password** and does not compile until you set your own in `Config.h`. Choose a strong one.
@@ -121,22 +135,23 @@ The bus idles at battery voltage, so a microcontroller must **never** be wired t
 
 <img src="Schematics/TH3122.4%20or%20ELMOS%2010026B.png" alt="BMW I-Bus K-Bus transceiver schematic with TH3122.4 or ELMOS 10026B for Arduino" width="75%">
 
-| Transceiver pin | Arduino Nano / Uno | ESP32 | Purpose |
+| Transceiver pin | Arduino | ESP32 | Purpose |
 | :-- | :-- | :-- | :-- |
 | TXD | `D0` (RX) | `GPIO16` | Bus → microcontroller |
 | RXD | `D1` (TX) | `GPIO17` | Microcontroller → bus |
-| SEN/STA | `D3` | `GPIO4` | Bus-idle detection; wakes the ESP32 from deep sleep |
-| EN | `D4` | `GPIO5` | Transceiver enable / sleep |
+| SEN/STA | `D3` | `GPIO4` | Bus-idle detection before transmitting |
+| EN | `D4` | `GPIO5` | Keeps the transceiver on; pulled low to switch everything off |
 | — | `D13` | `GPIO2` | Bus activity LED |
 | — | `D7` / `D8` | USB | Debug output |
 
-**Arduino Nano / Uno** — powered from the transceiver's 5 V output. When the bus goes quiet the firmware pulls EN low, the transceiver switches its regulator off and the Arduino powers down with it. Bus activity wakes both again.
+**Arduino** — powered from the transceiver's 5 V output. When the bus goes quiet the firmware pulls EN low, the transceiver switches its regulator off and the Arduino powers down with it. Bus activity wakes both again. The pins are the same on the Uno, Nano, Pro Mini and Mega 2560.
 
-**ESP32** — keep these three points in mind:
+**ESP32** — two things differ from the Arduino build:
 
-- **Power:** give the ESP32 its own 12 V → 5 V regulator; Wi-Fi draws more current than the transceiver's regulator is meant to supply.
+- **Power:** the transceiver's regulator cannot supply an ESP32 with Wi-Fi, so the ESP32 gets its own 12 V buck converter **with an enable pin**. The transceiver's 5 V output — the pin that powers the Arduino — drives that enable pin instead. When the transceiver sleeps, the converter is off and the ESP32 draws nothing; when the bus wakes the transceiver, the converter starts and the ESP32 boots.
 - **Logic level:** the transceiver uses 5 V logic and ESP32 pins are 3.3 V. Use a level shifter or voltage divider on the signals going into the ESP32 (TXD and SEN/STA).
-- **Wake-up pin:** SEN/STA must be connected to an RTC-capable GPIO (0, 2, 4, 12–15, 25–27, 32–39). The pins are set in [`Config.h`](Codes/E46_KBus_ESP32/Config.h).
+
+The pins are set in [`Config.h`](Codes/E46_KBus_ESP32/Config.h).
 
 <details>
 <summary><b>Alternative interface circuits</b></summary>
@@ -308,7 +323,13 @@ No. The K-Bus is the car's internal body network and is not present on the OBD-I
 <details>
 <summary><b>Will it drain my battery?</b></summary>
 
-Both versions sleep when the bus is quiet and wake up with the car. The Arduino is switched off completely by the transceiver. The ESP32 uses deep sleep; a bare module draws microamps in that state, while a development board with a USB bridge and power LED draws a few milliamps.
+No. Both versions are switched off completely by the transceiver when the bus goes quiet, and powered up again when the car wakes up. While the car sleeps, only the transceiver's own sleep current remains.
+</details>
+
+<details>
+<summary><b>Which Arduino boards work?</b></summary>
+
+The Arduino sketches build for the <b>Uno, Nano, Pro Mini</b> and <b>Mega 2560</b>. Boards with native USB such as the Leonardo and Micro are not supported as they are, because their <code>Serial</code> port is the USB connection and not a UART.
 </details>
 
 <details>
@@ -337,7 +358,7 @@ Contributions are welcome — especially:
 - Verified messages for other chassis (E38, E39, E53, E83, E85)
 - Wiring photos and connection points for other models
 
-Open an [issue](https://github.com/muki01/BMW_IBus_KBus/issues) to discuss an idea, or send a pull request.
+Please read the **[Contributing Guide](CONTRIBUTING.md)** and the **[Code of Conduct](CODE_OF_CONDUCT.md)**. Tested it on your car? Open a [vehicle report](https://github.com/muki01/BMW_IBus_KBus/issues/new/choose) with the model and year — real-world reports help everyone.
 
 ## 🔗 Related Projects
 
@@ -386,5 +407,7 @@ Released under the [MIT License](LICENSE).
 <div align="center">
 
 Created by [**Muki**](https://github.com/muki01) · If this project helped you, please give it a ⭐
+
+<sub>BMW · I-Bus · K-Bus · IBus · KBus · E46 · ESP32 · Arduino · web interface · welcome lights · follow-me-home · car hacking · TH3122</sub>
 
 </div>
