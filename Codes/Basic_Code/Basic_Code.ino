@@ -1,7 +1,13 @@
-#include <IbusSerial.h>
+// Basic_Code - prints every message on the I/K-Bus to the debug port
+// (Arduino Nano / Uno)
+//
+// Requires the "BMW IBus KBus" library:
+// https://github.com/muki01/BMW_IBus_KBus_Library
+
+#include <BMW_IBus_KBus.h>
 #include <SoftwareSerial.h>
 SoftwareSerial debugSerial(7, 8);
-IbusSerial ibus;
+BMW_IBus_KBus ibus;
 
 uint8_t source, length, destination, databytes[36];
 

@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="1280" height="440" role="img" aria-labelledby="t d">
+  <title id="t">BMW I/K-Bus - ready-to-flash Arduino and ESP32 firmware for classic BMWs</title>
+  <desc id="d">Banner showing a car switching its lights on after a key fob press, next to a phone with the web control interface.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    <radialGradient id="amber" cx="72%" cy="40%" r="55%">
+      <stop offset="0" stop-color="#ff7a1a" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="8%" cy="100%" r="55%">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffb347"/>
+      <stop offset="1" stop-color="#ff6a13"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd9a8" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ffd9a8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop offset="0" stop-color="#ffd9a8" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#ff8a2a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lamp">
+      <stop offset="0" stop-color="#fff7ec"/>
+      <stop offset="1" stop-color="#ffc37a"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity=".035"/>
+    </pattern>
+    <clipPath id="card"><rect width="1280" height="440" rx="22"/></clipPath>
+  </defs>
+    <style>
+      .lights{animation:glow 6s ease-in-out infinite}
+      .wave{animation:wave 6s ease-out infinite}
+      .w2{animation-delay:.18s}.w3{animation-delay:.36s}
+      .live{animation:blink 1.6s ease-in-out infinite}
+      @keyframes glow{0%,8%{opacity:.12}22%,78%{opacity:1}100%{opacity:.12}}
+      @keyframes wave{0%{opacity:0}4%{opacity:1}16%{opacity:1}26%{opacity:0}100%{opacity:0}}
+      @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+      @media (prefers-reduced-motion:reduce){.lights,.wave,.live{animation:none}}
+    </style>
+
+  <g clip-path="url(#card)">
+    <rect width="1280" height="440" fill="url(#bg)"/>
+    <rect width="1280" height="440" fill="url(#grid)"/>
+    <rect width="1280" height="440" fill="url(#amber)"/>
+    <rect width="1280" height="440" fill="url(#blue)"/>
+
+    <!-- left column -->
+    <text x="64" y="96" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="13" letter-spacing="2.4" fill="#ff9a3c">READY-TO-FLASH FIRMWARE</text>
+    <text x="60" y="182" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="82" font-weight="800" letter-spacing="-2" fill="#f8fafc">BMW <tspan fill="url(#title)">I/K-Bus</tspan></text>
+    <text font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="23" fill="#cbd5e1">
+      <tspan x="64" y="228">Welcome lights, follow-me-home and phone</tspan>
+      <tspan x="64" y="259">control for your classic BMW.</tspan>
+    </text>
+    <rect x="64" y="286" width="88" height="32" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+    <text x="108.0" y="307" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#cbd5e1">key fob</text>
+    <rect x="162" y="286" width="123" height="32" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+    <text x="223.5" y="307" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#cbd5e1">web control</text>
+    <rect x="295" y="286" width="114" height="32" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+    <text x="352.0" y="307" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#cbd5e1">sleep mode</text>
+    <rect x="419" y="286" width="54" height="32" rx="16" fill="#ffffff" fill-opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+    <text x="446.0" y="307" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#cbd5e1">E46</text>
+    <text x="64" y="362" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" letter-spacing="2" fill="#64748b">RUNS ON</text>
+    <text x="64" y="386" font-family="ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#94a3b8">Arduino Nano · ESP32</text>
+
+    <!-- right column -->
+    <g>
+      <rect x="668" y="96" width="32" height="54" rx="11" fill="#1a2640" stroke="#3d5280" stroke-width="2"/>
+      <circle cx="684" cy="112" r="5" fill="#ff8a2a"/>
+      <circle cx="684" cy="126" r="4" fill="#3d5280"/>
+      <circle cx="684" cy="138" r="4" fill="#3d5280"/>
+      <g fill="none" stroke="#ff8a2a" stroke-width="2.5" stroke-linecap="round">
+        <path class="wave w1" d="M712 110Q720 123 712 136"/>
+        <path class="wave w2" d="M724 102Q738 123 724 144"/>
+        <path class="wave w3" d="M736 94Q756 123 736 152"/>
+      </g>
+    </g>
+    <!-- light thrown onto the ground -->
+    <g class="lights">
+      <path d="M764 266H850L800 408H610Z" fill="url(#beam)"/>
+      <path d="M950 266H1036L1190 408H1000Z" fill="url(#beam)"/>
+      <circle cx="806" cy="254" r="62" fill="url(#halo)"/>
+      <circle cx="994" cy="254" r="62" fill="url(#halo)"/>
+    </g>
+
+    <ellipse cx="900" cy="334" rx="196" ry="9" fill="#000000" opacity=".4"/>
+    <rect x="752" y="300" width="46" height="30" rx="9" fill="#060b14"/>
+    <rect x="1002" y="300" width="46" height="30" rx="9" fill="#060b14"/>
+
+    <!-- cabin -->
+    <path d="M796 152Q900 116 1004 152L1034 216H766Z" fill="#101b2f" stroke="#34476c" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M810 160Q900 130 990 160L1012 208H788Z" fill="#18273f"/>
+    <rect x="740" y="204" width="28" height="14" rx="6" fill="#101b2f" stroke="#34476c" stroke-width="2"/>
+    <rect x="1032" y="204" width="28" height="14" rx="6" fill="#101b2f" stroke="#34476c" stroke-width="2"/>
+
+    <!-- body -->
+    <rect x="738" y="212" width="324" height="100" rx="32" fill="#111d33" stroke="#34476c" stroke-width="2"/>
+    <path d="M770 232Q900 220 1030 232" fill="none" stroke="#34476c" stroke-width="2" stroke-linecap="round"/>
+    <rect x="762" y="236" width="88" height="36" rx="16" fill="#070d18" stroke="#3d5280" stroke-width="2"/>
+    <rect x="950" y="236" width="88" height="36" rx="16" fill="#070d18" stroke="#3d5280" stroke-width="2"/>
+    <rect x="874" y="240" width="22" height="26" rx="8" fill="#070d18" stroke="#3d5280" stroke-width="2"/>
+    <rect x="904" y="240" width="22" height="26" rx="8" fill="#070d18" stroke="#3d5280" stroke-width="2"/>
+    <rect x="826" y="284" width="148" height="14" rx="7" fill="#070d18"/>
+    <g class="lights"><circle cx="786" cy="254" r="11" fill="url(#lamp)" stroke="#ffe3bf" stroke-width="2.5"/><circle cx="826" cy="254" r="11" fill="url(#lamp)" stroke="#ffe3bf" stroke-width="2.5"/><circle cx="974" cy="254" r="11" fill="url(#lamp)" stroke="#ffe3bf" stroke-width="2.5"/><circle cx="1014" cy="254" r="11" fill="url(#lamp)" stroke="#ffe3bf" stroke-width="2.5"/>
+      <circle cx="784" cy="291" r="6" fill="#ffb347"/>
+      <circle cx="1016" cy="291" r="6" fill="#ffb347"/>
+    </g>
+    <g>
+      <rect x="1112" y="88" width="116" height="232" rx="20" fill="#0a101c" stroke="#3d5280" stroke-width="2"/>
+      <rect x="1154" y="97" width="32" height="5" rx="2.5" fill="#22304a"/>
+      <text x="1124" y="124" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#e6ecf5">BMW <tspan fill="#ff8a2a">E46</tspan></text>
+      <circle class="live" cx="1212" cy="120" r="4" fill="#34d399"/>
+      <rect x="1124" y="134" width="44" height="28" rx="7" fill="#ff8a2a" stroke="#ff8a2a"/><rect x="1133" y="146" width="26" height="4" rx="2" fill="#3a1c02"/><rect x="1172" y="134" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1181" y="146" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1124" y="170" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1133" y="182" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1172" y="170" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1181" y="182" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1124" y="206" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1133" y="218" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1172" y="206" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1181" y="218" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1124" y="242" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1133" y="254" width="26" height="4" rx="2" fill="#5b6f94"/><rect x="1172" y="242" width="44" height="28" rx="7" fill="#1a2640" stroke="#2b3d61"/><rect x="1181" y="254" width="26" height="4" rx="2" fill="#5b6f94"/>
+      <rect x="1124" y="284" width="92" height="22" rx="7" fill="#101a2c" stroke="#2b3d61"/>
+      <rect x="1132" y="293" width="46" height="4" rx="2" fill="#5b6f94"/>
+    </g>
+  </g>
+</svg>
