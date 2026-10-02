@@ -76,7 +76,7 @@ The ESP32 firmware includes these three as well; they can be switched off in the
 
 **2. Tap the bus** — the [CD-changer connector](#-where-to-connect-bmw-e46) in the trunk gives you 12 V, ground and K-Bus in one plug.
 
-**3. Install the library** — download the [BMW IBus KBus library](https://github.com/muki01/BMW_IBus_KBus_Library) as a ZIP and add it in the Arduino IDE with **Sketch → Include Library → Add .ZIP Library…**
+**3. Install the library** — download the [BMW IBus KBus library](https://github.com/muki01/BMW_IBus_KBus_Library) as a ZIP and add it in the Arduino IDE with **Sketch → Include Library → Add .ZIP Library…** It is also on its way into the Library Manager.
 
 **4. Get the firmware** and open the sketch for your board in the Arduino IDE:
 
