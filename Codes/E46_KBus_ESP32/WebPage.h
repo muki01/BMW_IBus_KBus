@@ -16,7 +16,7 @@ const char WEB_PAGE[] PROGMEM = R"rawliteral(<!doctype html>
 <meta name="theme-color" content="#0b1220">
 <title>BMW E46</title>
 <style>
-:root{--bg:#0b1220;--card:#131c2e;--line:#243450;--text:#e6ecf5;--muted:#8a99b3;--accent:#ff8a2a;--ok:#34d399;--bad:#fb7185}
+:root{--bg:#0b1220;--card:#131c2e;--line:#243450;--text:#e6ecf5;--muted:#8a99b3;--accent:#22d3ee;--ok:#34d399;--bad:#fb7185}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
 header{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(11,18,32,.94);border-bottom:1px solid var(--line)}
@@ -31,9 +31,9 @@ section{background:var(--card);border:1px solid var(--line);border-radius:14px;p
 h2{margin:0 0 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 button{min-height:48px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#1a2640;color:var(--text);font:inherit;font-size:15px;cursor:pointer}
-button:active{background:var(--accent);border-color:var(--accent);color:#111}
+button:active{background:var(--accent);border-color:var(--accent);color:#06222a}
 button:disabled{opacity:.5}
-button.primary{background:var(--accent);border-color:var(--accent);color:#111;font-weight:600}
+button.primary{background:var(--accent);border-color:var(--accent);color:#06222a;font-weight:600}
 .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0}
 .row+.row{border-top:1px solid var(--line)}
 .row small{display:block;color:var(--muted);font-size:13px}

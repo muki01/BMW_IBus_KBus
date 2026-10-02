@@ -1,13 +1,13 @@
 <div align="center">
 
-<img src="Pictures/bmw-ibus-kbus-firmware-banner.svg" alt="BMW I-Bus / K-Bus firmware — a car switching its lights on after a key fob press, next to a phone with the web control interface" width="100%">
+<img src="Pictures/bmw-ibus-kbus-firmware-banner.svg" alt="BMW I-Bus / K-Bus firmware — a phone with the web control interface switching on the lights of a car over Wi-Fi" width="100%">
 
-# BMW I-Bus / K-Bus Firmware for Arduino & ESP32
+# BMW I-Bus / K-Bus Firmware for ESP32 & Arduino
 
-**Welcome lights, follow-me-home and phone control for your classic BMW.**<br>
-Ready-to-flash firmware that listens to the remote key and drives the car's lights over the K-Bus — plus an ESP32 version with a web interface for lights, windows, locks and more. Includes transceiver schematics and wiring photos for the BMW E46.
+**Control your classic BMW from your phone.**<br>
+Ready-to-flash ESP32 firmware that puts the lights, windows, locks and trunk of your car on a web page — no app and no internet needed. An Arduino Nano version without Wi-Fi is included too. With transceiver schematics and wiring photos for the BMW E46.
 
-[![Stars](https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=ff8a2a)](https://github.com/muki01/BMW_IBus_KBus/stargazers)
+[![Stars](https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=22d3ee)](https://github.com/muki01/BMW_IBus_KBus/stargazers)
 [![Forks](https://img.shields.io/github/forks/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=38bdf8)](https://github.com/muki01/BMW_IBus_KBus/forks)
 [![Issues](https://img.shields.io/github/issues/muki01/BMW_IBus_KBus?style=flat-square)](https://github.com/muki01/BMW_IBus_KBus/issues)
 [![License: MIT](https://img.shields.io/github/license/muki01/BMW_IBus_KBus?style=flat-square)](LICENSE)
@@ -30,14 +30,14 @@ Ready-to-flash firmware that listens to the remote key and drives the car's ligh
 
 ## 🌟 What Is This?
 
-Classic BMWs link their body electronics over a single wire, the **K-Bus**. A small microcontroller on that wire can hear every key-fob press and tell the light module, the body module and the windows what to do.
+Classic BMWs link their body electronics over a single wire, the **K-Bus**. A small microcontroller on that wire can tell the light module, the body module and the windows what to do.
 
-This repository is the **firmware** side of that idea: complete sketches you upload, connect and use.
+This repository is the **firmware** side of that idea: complete sketches you upload, connect and use. The ESP32 version creates its own Wi-Fi network and lets you control the car from a web page on your phone.
 
 | Firmware | Board | What it does |
 | :-- | :-- | :-- |
-| [`E46_KBus_Code`](Codes/E46_KBus_Code) | Arduino Nano / Uno | Welcome lights, goodbye lights and follow-me-home from the remote key. |
-| [`E46_KBus_ESP32`](Codes/E46_KBus_ESP32) | ESP32 | Everything above, plus a Wi-Fi web interface to control the car from your phone. |
+| [`E46_KBus_ESP32`](Codes/E46_KBus_ESP32) | ESP32 | Wi-Fi web interface to control the car from your phone. |
+| [`E46_KBus_Code`](Codes/E46_KBus_Code) | Arduino Nano / Uno | The Nano has no Wi-Fi, so this version works from the remote key: welcome lights, goodbye lights and follow-me-home. |
 | [`Basic_Code`](Codes/Basic_Code) | Arduino Nano / Uno | Bus reader that prints every message — useful to check your wiring. |
 
 > [!IMPORTANT]
@@ -45,22 +45,29 @@ This repository is the **firmware** side of that idea: complete sketches you upl
 
 ```mermaid
 flowchart LR
-    KEY["Remote key"] -->|"lock / unlock"| CAR["BMW K-Bus<br/>12 V · single wire"]
-    CAR <--> TRX["Bus transceiver<br/>TH3122.4 · ELMOS 10026B"]
-    TRX <--> MCU["Arduino Nano<br/>or ESP32"]
-    PHONE["Phone<br/>web interface"] <-->|"Wi-Fi"| MCU
+    PHONE["Phone<br/>web interface"] <-->|"Wi-Fi"| MCU["ESP32"]
+    MCU <--> TRX["Bus transceiver<br/>TH3122.4 · ELMOS 10026B"]
+    TRX <--> CAR["BMW K-Bus<br/>12 V · single wire"]
 ```
 
 ## ✨ Features
 
 | | Function | How it works |
 | :-: | :-- | :-- |
+| 📱 | **Phone control** | Lights, locks, trunk, windows, sunroof, interior light and wipers from any phone browser — no app, no internet. |
+| 🎚️ | **Settings on the page** | Change the sleep timers and switch functions on or off; everything is stored on the ESP32. |
+| 🔎 | **Bus monitor** | See the latest bus messages live in the web interface. |
+| 💤 | **Sleep mode** | Powers down when the bus goes quiet and wakes up with the car, so it does not drain the battery. |
+
+The **Arduino Nano** has no Wi-Fi, so its firmware is driven by the remote key instead:
+
+| | Function | How it works |
+| :-: | :-- | :-- |
 | 💡 | **Welcome lights** | Press *unlock* — parking lights and turn signals come on. Press *unlock* again within about 15 seconds to add the fog lights. |
 | 👋 | **Goodbye lights** | Press *lock* — the lights come on for 2 seconds as you walk away. |
 | 🏠 | **Follow-me-home** | With the car locked, press *lock* twice within 4 seconds to keep the headlights on. |
-| 📱 | **Web control** *(ESP32)* | Lights, locks, trunk, windows, sunroof, interior light and wipers from any phone browser — no app, no internet. |
-| 🔎 | **Bus monitor** *(ESP32)* | See the latest bus messages live in the web interface. |
-| 💤 | **Sleep mode** | Powers down when the bus goes quiet and wakes up with the car, so it does not drain the battery. |
+
+The ESP32 firmware includes these three as well; they can be switched off in the web interface.
 
 ## 🚀 Quick Start
 
@@ -78,8 +85,8 @@ git clone https://github.com/muki01/BMW_IBus_KBus.git
 
 **5. Upload.**
 
-- **Arduino Nano / Uno** — open `Codes/E46_KBus_Code`, select your board and upload. Disconnect the transceiver from D0 / D1 while uploading; the bus shares the hardware UART with USB.
 - **ESP32** — open `Codes/E46_KBus_ESP32`, set your own Wi-Fi password in [`Config.h`](Codes/E46_KBus_ESP32/Config.h), select **ESP32 Dev Module** and upload. Then connect your phone to the `BMW-E46` network and open **http://192.168.4.1**
+- **Arduino Nano / Uno** — open `Codes/E46_KBus_Code`, select your board and upload. Disconnect the transceiver from D0 / D1 while uploading; the bus shares the hardware UART with USB.
 
 ## 📱 ESP32 Web Interface
 
@@ -281,8 +288,8 @@ The firmware and message table were written for the **BMW E46**. The K-Bus itsel
 ```text
 BMW_IBus_KBus/
 ├── Codes/
-│   ├── E46_KBus_Code/       Arduino firmware: key fob light functions
-│   ├── E46_KBus_ESP32/      ESP32 firmware: key fob light functions + web interface
+│   ├── E46_KBus_ESP32/      ESP32 firmware: web interface for your phone
+│   ├── E46_KBus_Code/       Arduino firmware: light functions from the remote key
 │   └── Basic_Code/          Bus reader for checking the wiring
 ├── Schematics/              Transceiver circuits
 └── Pictures/                Wiring photo guides
