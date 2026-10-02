@@ -52,4 +52,4 @@ The code that receives and transmits on the bus lives in the **[BMW IBus KBus li
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
+By contributing, you agree that your contributions are licensed under the [GNU General Public License v3.0](LICENSE), and that the author may also offer them under a commercial license.
