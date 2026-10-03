@@ -1,29 +1,31 @@
+<a id="readme-top"></a>
+
 <div align="center">
 
-<img src="Pictures/bmw-ibus-kbus-firmware-banner.svg" alt="BMW I-Bus / K-Bus firmware — a phone with the web control interface switching on the lights of a car over Wi-Fi" width="100%">
+<img src="images/bmw-ibus-kbus-firmware-banner.svg" alt="BMW I-Bus / K-Bus firmware — a phone with the web control interface switching on the lights of a car over Wi-Fi" width="100%">
 
 # BMW I-Bus / K-Bus Firmware for ESP32 & Arduino
 
 **Control your classic BMW from your phone.**<br>
 Ready-to-flash ESP32 firmware that puts the lights, windows, locks and trunk of your car on a web page — no app and no internet needed. A version for Arduino boards without Wi-Fi — Uno, Nano, Pro Mini, Mega — is included too. With transceiver schematics and wiring photos for the BMW E46.
 
-[![Stars](https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=22d3ee)](https://github.com/muki01/BMW_IBus_KBus/stargazers)
-[![Forks](https://img.shields.io/github/forks/muki01/BMW_IBus_KBus?style=flat-square&logo=github&color=38bdf8)](https://github.com/muki01/BMW_IBus_KBus/forks)
-[![Issues](https://img.shields.io/github/issues/muki01/BMW_IBus_KBus?style=flat-square)](https://github.com/muki01/BMW_IBus_KBus/issues)
-[![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue?style=flat-square)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/muki01/BMW_IBus_KBus?style=flat-square)](https://github.com/muki01/BMW_IBus_KBus/commits/main)
-[![Build](https://img.shields.io/github/actions/workflow/status/muki01/BMW_IBus_KBus/build.yml?style=flat-square&label=build)](https://github.com/muki01/BMW_IBus_KBus/actions/workflows/build.yml)
-![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
-![ESP32](https://img.shields.io/badge/ESP32-E7352C?style=flat-square&logo=espressif&logoColor=white)
-![BMW E46](https://img.shields.io/badge/BMW-E46-0066B1?style=flat-square)
+<p>
+  <a href="https://github.com/muki01/BMW_IBus_KBus/stargazers"><img alt="GitHub stars" height="28" src="https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2"></a>
+  <a href="https://github.com/muki01/BMW_IBus_KBus/network/members"><img alt="GitHub forks" height="28" src="https://img.shields.io/github/forks/muki01/BMW_IBus_KBus?style=flat&logo=github&logoColor=white&label=Forks&labelColor=1f2328&color=2563eb"></a>
+  <a href="https://github.com/muki01/BMW_IBus_KBus/issues"><img alt="GitHub issues" height="28" src="https://img.shields.io/github/issues/muki01/BMW_IBus_KBus?style=flat&logo=github&logoColor=white&label=Issues&labelColor=1f2328&color=6366f1"></a>
+  <a href="LICENSE"><img alt="GPL-3.0 license" height="28" src="https://img.shields.io/badge/License-GPL--3.0-16a34a?style=flat&logo=opensourceinitiative&logoColor=white&labelColor=1f2328"></a>
+  <a href="https://github.com/muki01/BMW_IBus_KBus/commits/main"><img alt="Last commit" height="28" src="https://img.shields.io/github/last-commit/muki01/BMW_IBus_KBus?style=flat&logo=git&logoColor=white&label=Last%20commit&labelColor=1f2328&color=9333ea"></a>
+  <a href="https://github.com/muki01/BMW_IBus_KBus/actions/workflows/build.yml"><img alt="Build status" height="28" src="https://img.shields.io/github/actions/workflow/status/muki01/BMW_IBus_KBus/build.yml?style=flat&logo=githubactions&logoColor=white&label=Build&labelColor=1f2328"></a>
+</p>
 
-[Features](#-features) ·
-[Quick Start](#-quick-start) ·
-[Web Interface](#-esp32-web-interface) ·
-[Hardware](#-hardware) ·
-[Where to Connect](#-where-to-connect-bmw-e46) ·
-[Messages](#-message-reference) ·
-[FAQ](#-faq)
+<p>
+  <a href="#-hardware"><img alt="ESP32" height="24" src="https://img.shields.io/badge/ESP32-E7352C?style=flat&logo=espressif&logoColor=white"></a>
+  <a href="#-hardware"><img alt="Arduino" height="24" src="https://img.shields.io/badge/Arduino-00979D?style=flat&logo=arduino&logoColor=white"></a>
+  <a href="#-supported-models"><img alt="BMW E46" height="24" src="https://img.shields.io/badge/BMW-E46-0066B1?style=flat&logo=bmw&logoColor=white&labelColor=1f2328"></a>
+  <a href="#-message-reference"><img alt="I-Bus and K-Bus" height="24" src="https://img.shields.io/badge/I--Bus%20%C2%B7%20K--Bus-supported-2563eb?style=flat&labelColor=1f2328"></a>
+</p>
+
+**[Features](#-features)** · **[Quick Start](#-quick-start)** · **[Web Interface](#-esp32-web-interface)** · **[Hardware](#-hardware)** · **[Where to Connect](#-where-to-connect-bmw-e46)** · **[Messages](#-message-reference)** · **[FAQ](#-faq)**
 
 </div>
 
@@ -93,9 +95,9 @@ git clone https://github.com/muki01/BMW_IBus_KBus.git
 
 <table>
   <tr>
-    <td width="33%"><img src="Pictures/esp32-web-interface-control.png" alt="ESP32 web interface on a phone, Control tab: sleep countdown, category chips and buttons for the lights and locks"></td>
-    <td width="33%"><img src="Pictures/esp32-web-interface-monitor.png" alt="ESP32 web interface on a phone, Monitor tab: live K-Bus messages with sender and receiver"></td>
-    <td width="33%"><img src="Pictures/esp32-web-interface-settings.png" alt="ESP32 web interface on a phone, Settings tab: key fob functions, sleep timers and device information"></td>
+    <td width="33%"><img src="images/esp32-web-interface-control.png" alt="ESP32 web interface on a phone, Control tab: sleep countdown, category chips and buttons for the lights and locks"></td>
+    <td width="33%"><img src="images/esp32-web-interface-monitor.png" alt="ESP32 web interface on a phone, Monitor tab: live K-Bus messages with sender and receiver"></td>
+    <td width="33%"><img src="images/esp32-web-interface-settings.png" alt="ESP32 web interface on a phone, Settings tab: key fob functions, sleep timers and device information"></td>
   </tr>
   <tr>
     <td align="center"><b>Control</b></td>
@@ -153,10 +155,7 @@ The bus idles at battery voltage, so a microcontroller must **never** be wired t
 
 The pins are set in [`Config.h`](Codes/E46_KBus_ESP32/Config.h).
 
-<details>
-<summary><b>Alternative interface circuits</b></summary>
-
-<br>
+### Alternative interface circuits
 
 **Optocouplers (PC817)** — built from common parts; well suited to reading the bus.
 
@@ -168,8 +167,6 @@ The pins are set in [`Config.h`](Codes/E46_KBus_ESP32/Config.h).
 
 These circuits have no SEN/STA and EN pins, so the firmware's collision avoidance and sleep mode are not available with them.
 
-</details>
-
 ## 🔌 Where to Connect (BMW E46)
 
 The K-Bus is **not** available on the OBD-II port. These are the most practical places to reach it:
@@ -180,9 +177,9 @@ Pre-wired in the trunk on most cars, even when no CD changer is installed. One p
 
 <table>
   <tr>
-    <td width="33%"><img src="Pictures/bmw-e46-trunk-cd-changer-location.jpg" alt="BMW E46 trunk, left side trim panel hiding the CD changer wiring"></td>
-    <td width="33%"><img src="Pictures/bmw-e46-cd-changer-bracket-wiring.jpg" alt="BMW E46 CD changer bracket with the pre-wired K-Bus connector behind the trunk trim"></td>
-    <td width="33%"><img src="Pictures/bmw-e46-cd-changer-connector-x18180-kbus.jpg" alt="BMW E46 CD changer connector X18180 with K-Bus, 12 V and ground wires"></td>
+    <td width="33%"><img src="images/bmw-e46-trunk-cd-changer-location.jpg" alt="BMW E46 trunk, left side trim panel hiding the CD changer wiring"></td>
+    <td width="33%"><img src="images/bmw-e46-cd-changer-bracket-wiring.jpg" alt="BMW E46 CD changer bracket with the pre-wired K-Bus connector behind the trunk trim"></td>
+    <td width="33%"><img src="images/bmw-e46-cd-changer-connector-x18180-kbus.jpg" alt="BMW E46 CD changer connector X18180 with K-Bus, 12 V and ground wires"></td>
   </tr>
   <tr>
     <td align="center"><b>1.</b> Open the trunk — driver's side</td>
@@ -203,16 +200,16 @@ The central splice point where every K-Bus branch of the car meets. Take the bus
 
 <table>
   <tr>
-    <td width="50%"><img src="Pictures/bmw-e46-fuse-box-kbus-junction-location.jpg" alt="BMW E46 fuse box in the glove compartment with the K-Bus junction block above it"></td>
-    <td width="50%"><img src="Pictures/bmw-e46-kbus-junction-connector-removed.jpg" alt="BMW E46 connector block removed from above the fuse box to access the K-Bus junction"></td>
+    <td width="50%"><img src="images/bmw-e46-fuse-box-kbus-junction-location.jpg" alt="BMW E46 fuse box in the glove compartment with the K-Bus junction block above it"></td>
+    <td width="50%"><img src="images/bmw-e46-kbus-junction-connector-removed.jpg" alt="BMW E46 connector block removed from above the fuse box to access the K-Bus junction"></td>
   </tr>
   <tr>
     <td align="center"><b>1.</b> Locate the connector block above the fuse box</td>
     <td align="center"><b>2.</b> Unclip it and pull it out</td>
   </tr>
   <tr>
-    <td><img src="Pictures/bmw-e46-kbus-junction-block-terminals.jpg" alt="BMW E46 K-Bus junction block with terminals marked by arrows"></td>
-    <td><img src="Pictures/bmw-e46-kbus-wires-white-red-yellow.jpg" alt="BMW E46 K-Bus wires, white and red with yellow dots, joined by a comb connector"></td>
+    <td><img src="images/bmw-e46-kbus-junction-block-terminals.jpg" alt="BMW E46 K-Bus junction block with terminals marked by arrows"></td>
+    <td><img src="images/bmw-e46-kbus-wires-white-red-yellow.jpg" alt="BMW E46 K-Bus wires, white and red with yellow dots, joined by a comb connector"></td>
   </tr>
   <tr>
     <td align="center"><b>3.</b> Find the K-Bus junction block</td>
@@ -307,7 +304,7 @@ BMW_IBus_KBus/
 │   ├── E46_KBus_Code/       Arduino firmware: light functions from the remote key
 │   └── Basic_Code/          Bus reader for checking the wiring
 ├── Schematics/              Transceiver circuits
-└── Pictures/                Wiring photo guides
+└── images/                  Wiring photos and screenshots
 ```
 
 The bus communication code lives in its own repository: **[BMW_IBus_KBus_Library](https://github.com/muki01/BMW_IBus_KBus_Library)**.
@@ -371,22 +368,22 @@ This firmware is part of a family of open-source automotive projects. They share
   <tr>
     <td width="30%"><b>BMW I-Bus / K-Bus Firmware</b><br><sub>you are here</sub></td>
     <td>Phone control and key-fob light functions for the BMW E46, on the ESP32 and Arduino.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/BMW_IBus_KBus/stargazers"><img src="https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of BMW_IBus_KBus"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/BMW_IBus_KBus/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/BMW_IBus_KBus?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of BMW_IBus_KBus"></a></td>
   </tr>
   <tr>
     <td width="30%"><a href="https://github.com/muki01/OBD2_K-line_Reader"><b>OBD2 K-Line Reader</b></a></td>
     <td>Scan tool for K-Line cars (ISO 9141-2, KWP2000) with a web dashboard, for the ESP32, ESP8266 and Arduino.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/OBD2_K-line_Reader/stargazers"><img src="https://img.shields.io/github/stars/muki01/OBD2_K-line_Reader?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of OBD2_K-line_Reader"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/OBD2_K-line_Reader/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/OBD2_K-line_Reader?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of OBD2_K-line_Reader"></a></td>
   </tr>
   <tr>
     <td width="30%"><a href="https://github.com/muki01/OBD2_CAN_Bus_Reader"><b>OBD2 CAN Bus Reader</b></a></td>
     <td>Scan tool for CAN bus cars (ISO 15765-4) with the same web dashboard, for the ESP32.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/OBD2_CAN_Bus_Reader/stargazers"><img src="https://img.shields.io/github/stars/muki01/OBD2_CAN_Bus_Reader?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of OBD2_CAN_Bus_Reader"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/OBD2_CAN_Bus_Reader/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/OBD2_CAN_Bus_Reader?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of OBD2_CAN_Bus_Reader"></a></td>
   </tr>
   <tr>
     <td width="30%"><a href="https://github.com/muki01/VAG_KW1281"><b>VAG KW1281</b></a></td>
     <td>KW1281 diagnostics for VW, Audi, Škoda and SEAT: ECU information, measuring groups and fault codes.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/VAG_KW1281/stargazers"><img src="https://img.shields.io/github/stars/muki01/VAG_KW1281?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of VAG_KW1281"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/VAG_KW1281/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/VAG_KW1281?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of VAG_KW1281"></a></td>
   </tr>
   <tr>
     <th colspan="3" align="left">Libraries — build your own firmware</th>
@@ -394,17 +391,17 @@ This firmware is part of a family of open-source automotive projects. They share
   <tr>
     <td width="30%"><a href="https://github.com/muki01/BMW_IBus_KBus_Library"><b>BMW IBus KBus Library</b></a></td>
     <td>Receives, checks and sends BMW I-Bus and K-Bus messages; the library behind the BMW firmware.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/BMW_IBus_KBus_Library/stargazers"><img src="https://img.shields.io/github/stars/muki01/BMW_IBus_KBus_Library?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of BMW_IBus_KBus_Library"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/BMW_IBus_KBus_Library/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/BMW_IBus_KBus_Library?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of BMW_IBus_KBus_Library"></a></td>
   </tr>
   <tr>
     <td width="30%"><a href="https://github.com/muki01/OBD2_KLine_Library"><b>OBD2 K-Line Library</b></a></td>
     <td>K-Line diagnostics behind one API: ISO 9141-2, KWP2000, KW1281, DS2 and KW82.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/OBD2_KLine_Library/stargazers"><img src="https://img.shields.io/github/stars/muki01/OBD2_KLine_Library?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of OBD2_KLine_Library"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/OBD2_KLine_Library/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/OBD2_KLine_Library?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of OBD2_KLine_Library"></a></td>
   </tr>
   <tr>
     <td width="30%"><a href="https://github.com/muki01/OBD2_CAN_Bus_Library"><b>OBD2 CAN Bus Library</b></a></td>
     <td>OBD-II diagnostics over ISO 15765-4 with the ESP32's built-in CAN controller.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/OBD2_CAN_Bus_Library/stargazers"><img src="https://img.shields.io/github/stars/muki01/OBD2_CAN_Bus_Library?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of OBD2_CAN_Bus_Library"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/OBD2_CAN_Bus_Library/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/OBD2_CAN_Bus_Library?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of OBD2_CAN_Bus_Library"></a></td>
   </tr>
   <tr>
     <th colspan="3" align="left">Interface</th>
@@ -412,7 +409,7 @@ This firmware is part of a family of open-source automotive projects. They share
   <tr>
     <td width="30%"><a href="https://github.com/muki01/OBD2-Diagnostic-UI"><b>OBD2 Diagnostic UI</b></a></td>
     <td>The web dashboard used by the two OBD2 readers.</td>
-    <td width="96" align="center"><a href="https://github.com/muki01/OBD2-Diagnostic-UI/stargazers"><img src="https://img.shields.io/github/stars/muki01/OBD2-Diagnostic-UI?style=flat-square&label=stars&color=22d3ee" alt="GitHub stars of OBD2-Diagnostic-UI"></a></td>
+    <td width="118" align="center"><a href="https://github.com/muki01/OBD2-Diagnostic-UI/stargazers"><img height="22" src="https://img.shields.io/github/stars/muki01/OBD2-Diagnostic-UI?style=flat&logo=github&logoColor=white&label=Stars&labelColor=1f2328&color=0891b2" alt="GitHub stars of OBD2-Diagnostic-UI"></a></td>
   </tr>
 </table>
 
@@ -443,11 +440,22 @@ For custom development, collaboration, sponsorship or ready-made devices:
 
 ## ☕ Support the Project
 
-If this project saved you time, consider supporting its development:
+If this project helped you, consider supporting its development:
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/muki01)
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=SAAH5GHAH6T72)
-[![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-181717?style=for-the-badge&logo=github)](https://github.com/sponsors/muki01)
+<p>
+  <a href="https://www.buymeacoffee.com/muki01"><img alt="Buy Me a Coffee" height="32" src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=flat&logo=buymeacoffee&logoColor=black"></a>
+  <a href="https://www.paypal.com/donate/?hosted_button_id=SAAH5GHAH6T72"><img alt="Donate with PayPal" height="32" src="https://img.shields.io/badge/PayPal-00457C?style=flat&logo=paypal&logoColor=white"></a>
+  <a href="https://github.com/sponsors/muki01"><img alt="GitHub Sponsors" height="32" src="https://img.shields.io/badge/GitHub%20Sponsors-1f2328?style=flat&logo=githubsponsors&logoColor=EA4AAA"></a>
+</p>
+
+## 📈 Star History
+
+<a href="https://star-history.com/#muki01/BMW_IBus_KBus&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=muki01/BMW_IBus_KBus&type=Date&theme=dark">
+    <img alt="Star history chart for BMW I-Bus / K-Bus Firmware" src="https://api.star-history.com/svg?repos=muki01/BMW_IBus_KBus&type=Date" width="100%">
+  </picture>
+</a>
 
 ## ⚠️ Disclaimer
 
@@ -474,5 +482,7 @@ Copyright © 2023–2026 Muksin Muksin.
 Created by [**Muki**](https://github.com/muki01) · If this project helped you, please give it a ⭐
 
 <sub>BMW · I-Bus · K-Bus · IBus · KBus · E46 · ESP32 · Arduino · web interface · welcome lights · follow-me-home · car hacking · TH3122</sub>
+
+**[⬆ Back to top](#readme-top)**
 
 </div>
